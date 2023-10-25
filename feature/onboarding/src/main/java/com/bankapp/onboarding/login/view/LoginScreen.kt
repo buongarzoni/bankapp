@@ -1,5 +1,3 @@
-@file:OptIn(ExperimentalMaterial3Api::class)
-
 package com.bankapp.onboarding.login.view
 
 import androidx.compose.foundation.layout.Spacer
@@ -9,7 +7,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
@@ -101,6 +98,6 @@ private fun RegisterButton(presenter: LoginPresenter) = OutlinedButton(
 
 @UIModePreview
 @Composable
-fun Preview() = BankappTheme {
+fun Preview() = BankappTheme(dynamicColor = false) {
     LoginScreen(LoginPresenterPreview())
 }
