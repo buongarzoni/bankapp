@@ -15,16 +15,16 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
-private val DarkColorScheme = darkColorScheme(
-    primary = com.bankapp.components.theme.Purple80,
-    secondary = com.bankapp.components.theme.PurpleGrey80,
-    tertiary = com.bankapp.components.theme.Pink80
+private val darkColorScheme = darkColorScheme(
+    primary = Purple80,
+    secondary = PurpleGrey80,
+    tertiary = Pink80
 )
 
-private val LightColorScheme = lightColorScheme(
-    primary = com.bankapp.components.theme.Purple40,
-    secondary = com.bankapp.components.theme.PurpleGrey40,
-    tertiary = com.bankapp.components.theme.Pink40
+private val lightColorScheme = lightColorScheme(
+    primary = Purple40,
+    secondary = PurpleGrey40,
+    tertiary = Pink40
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
@@ -50,8 +50,8 @@ fun BankappTheme(
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
 
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
+        darkTheme -> darkColorScheme
+        else -> lightColorScheme
     }
     val view = LocalView.current
     if (!view.isInEditMode) {
