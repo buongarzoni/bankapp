@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "bankapp"
 include(":app")
- 
+include(":feature:components")
