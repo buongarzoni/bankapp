@@ -50,6 +50,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":feature:components"))
     implementation(project(":feature:onboarding"))
 
     implementation("androidx.core:core-ktx:1.9.0")

@@ -1,4 +1,4 @@
-package com.bankapp.ui.theme
+package com.bankapp.components.theme
 
 import androidx.compose.ui.graphics.Color
 
