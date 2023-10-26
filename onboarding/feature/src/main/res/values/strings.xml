@@ -11,4 +11,7 @@
     <string name="onboarding_error_password_long">Password is too long, must contain 32 characters max</string>
     <string name="onboarding_error_password_short">Password is too short, must contain 8 or more characters</string>
     <string name="onboarding_error_name_password_character">Password contains invalid characters, only alphanumeric or \'-\' and \'_\' are allowed</string>
+    <string name="onboarding_cd_hide_password">Hide password</string>
+    <string name="onboarding_cd_show_password">Show password</string>
+    <string name="onboarding_cd_email_placeholder">Email input</string>
 </resources>

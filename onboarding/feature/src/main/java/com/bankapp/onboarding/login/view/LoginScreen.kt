@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -20,9 +19,10 @@ import com.bankapp.components.preview.UIModePreview
 import com.bankapp.components.screen.BankTopAppBar
 import com.bankapp.components.theme.BankappTheme
 import com.bankapp.onboarding.R
+import com.bankapp.onboarding.components.EmailPlaceholder
+import com.bankapp.onboarding.components.PasswordPlaceholder
 import com.bankapp.onboarding.login.presentation.LoginPresenter
 import com.bankapp.onboarding.login.presentation.LoginPresenterPreview
-import com.bankapp.onboarding.utils.AsTextFieldError
 
 @Composable
 fun LoginScreen(
@@ -46,8 +46,8 @@ private fun Content(
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         item {
-            EmailStateHolder(presenter)
-            PasswordStateHolder(presenter)
+            Email(presenter)
+            Password(presenter)
             Spacer(modifier = Modifier.height(20.dp))
             LoginButton(presenter)
             RegisterButton(presenter)
@@ -56,16 +56,18 @@ private fun Content(
 }
 
 @Composable
-private fun EmailStateHolder(presenter: LoginPresenter) {
-    EmailInput(presenter)
-    EmailError(presenter)
-}
+private fun Email(presenter: LoginPresenter) = EmailPlaceholder(
+    value = presenter.email.value,
+    error = presenter.emailError.value,
+    onEmailChanged = { presenter.onEmailChanged(it) },
+)
 
 @Composable
-private fun PasswordStateHolder(presenter: LoginPresenter) {
-    PasswordInput(presenter)
-    PasswordError(presenter)
-}
+private fun Password(presenter: LoginPresenter) = PasswordPlaceholder(
+    value = presenter.password.value,
+    error = presenter.passwordError.value,
+    onPasswordChange = { presenter.onPasswordChanged(it) },
+)
 
 @Composable
 private fun LoginButton(presenter: LoginPresenter) = Button(
@@ -86,31 +88,6 @@ private fun RegisterButton(presenter: LoginPresenter) = OutlinedButton(
 ) {
     Text(stringResource(R.string.feature_onboarding_button_register))
 }
-
-@Composable
-private fun EmailInput(presenter: LoginPresenter) = OutlinedTextField(
-    modifier = Modifier
-        .fillMaxWidth()
-        .padding(bottom = 8.dp),
-    label = { Text(stringResource(R.string.feature_onboarding_label_email)) },
-    value = presenter.email.value,
-    onValueChange = { presenter.onEmailChanged(it) },
-)
-
-@Composable
-private fun PasswordInput(presenter: LoginPresenter) = OutlinedTextField(
-    modifier = Modifier.fillMaxWidth(),
-    label = { Text(stringResource(R.string.feature_onboarding_label_password)) },
-    value = presenter.password.value,
-    onValueChange = { presenter.onPasswordChanged(it) },
-)
-
-@Composable
-private fun EmailError(presenter: LoginPresenter) = presenter.emailError.value.AsTextFieldError()
-
-@Composable
-private fun PasswordError(presenter: LoginPresenter) =
-    presenter.passwordError.value.AsTextFieldError()
 
 @UIModePreview
 @Composable
