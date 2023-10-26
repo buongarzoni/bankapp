@@ -7,7 +7,7 @@ import com.bankapp.core.domain.success
 @JvmInline
 value class Email private constructor(val value: String) {
     companion object {
-        fun valueOf(string: String): Either<Email, EmailError> {
+        fun valueOf(string: String): Either<EmailError, Email> {
             val lowercaseString = string.lowercase().trim()
             return if (lowercaseString.isValid()) {
                 Email(lowercaseString).success()

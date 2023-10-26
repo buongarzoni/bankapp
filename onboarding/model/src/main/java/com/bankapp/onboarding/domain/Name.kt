@@ -9,7 +9,7 @@ value class Name private constructor(
     val value: String,
 ) {
     companion object {
-        fun valueOf(string: String): Either<Name, NameError> {
+        fun valueOf(string: String): Either<NameError, Name> {
             val trimmedString = string.trim()
             if (trimmedString.isTooShort()) return NameError.SHORT.error()
             if (trimmedString.isTooLong()) return NameError.LONG.error()
