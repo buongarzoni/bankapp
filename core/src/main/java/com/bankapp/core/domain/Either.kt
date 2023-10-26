@@ -8,5 +8,5 @@ sealed interface Either<L, R> {
 fun <L, R> L.success() = Either.Success<L, R>(this)
 fun <L, R> R.error() = Either.Error<L, R>(this)
 
-fun <L, R> Either<L, R>.asSuccess() = this as Either.Success
-fun <L, R> Either<L, R>.asError() = this as Either.Error
+fun <L, R> Either<L, R>.asSuccess() = (this as Either.Success).value
+fun <L, R> Either<L, R>.asError() = (this as Either.Error).error

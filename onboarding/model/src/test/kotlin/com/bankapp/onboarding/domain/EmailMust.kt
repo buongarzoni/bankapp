@@ -15,7 +15,7 @@ class EmailMust {
         val invalidEmail = Email.valueOf("some random string")
 
         assertTrue(invalidEmail is Either.Error)
-        assertEquals(EmailError.MALFORMED, invalidEmail.asError().error)
+        assertEquals(EmailError.MALFORMED, invalidEmail.asError())
     }
 
     @Test
@@ -23,7 +23,7 @@ class EmailMust {
         val invalidEmail = Email.valueOf("some_email!@bankapp.com")
 
         assertTrue(invalidEmail is Either.Error)
-        assertEquals(EmailError.MALFORMED, invalidEmail.asError().error)
+        assertEquals(EmailError.MALFORMED, invalidEmail.asError())
     }
 
     @Test
@@ -31,6 +31,6 @@ class EmailMust {
         val email = Email.valueOf("some_email@bankapp.com").asSuccess()
         val emailUpperCase = Email.valueOf("  Some_Email@bankapp.COM \n  ").asSuccess()
 
-        assertEquals(email.value, emailUpperCase.value)
+        assertEquals(email, emailUpperCase)
     }
 }
