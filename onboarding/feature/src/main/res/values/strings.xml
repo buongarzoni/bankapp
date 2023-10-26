@@ -4,4 +4,11 @@
     <string name="feature_onboarding_label_password">Password</string>
     <string name="feature_onboarding_button_login">Login</string>
     <string name="feature_onboarding_button_register">Register</string>
+    <string name="onboarding_error_malformed_email">Looks like this email is invalid</string>
+    <string name="onboarding_error_name_long">Name is too long, must contain 20 characters max</string>
+    <string name="onboarding_error_name_short">Name is too short, must contain 2 or more characters</string>
+    <string name="onboarding_error_name_invalid_character">Name contains invalid characters, please use a characters between a-z</string>
+    <string name="onboarding_error_password_long">Password is too long, must contain 32 characters max</string>
+    <string name="onboarding_error_password_short">Password is too short, must contain 8 or more characters</string>
+    <string name="onboarding_error_name_password_character">Password contains invalid characters, only alphanumeric or \'-\' and \'_\' are allowed</string>
 </resources>
