@@ -42,7 +42,7 @@ android {
 
 dependencies {
     implementation(project(":feature:components"))
-    implementation(project(":feature:onboarding"))
+    implementation(project(":onboarding:feature"))
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")

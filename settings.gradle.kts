@@ -16,8 +16,8 @@ dependencyResolutionManagement {
 
 rootProject.name = "bankapp"
 include(":app")
-include(":feature:onboarding")
+include(":core")
+include(":onboarding:feature")
+include(":onboarding:model")
 include(":feature:components")
 include(":feature:home")
-include(":model:onboarding")
-include(":core")
