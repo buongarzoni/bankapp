@@ -32,7 +32,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":feature:components"))
+    implementation(project(":components"))
     implementation(project(":onboarding:model"))
     implementation(project(":core"))
 
