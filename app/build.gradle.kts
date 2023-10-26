@@ -7,16 +7,12 @@ plugins {
 
 android {
     namespace = "com.bankapp"
-    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.bankapp"
-        minSdk = 26
-        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -30,13 +26,6 @@ android {
                 "proguard-rules.pro"
             )
         }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-    kotlinOptions {
-        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
