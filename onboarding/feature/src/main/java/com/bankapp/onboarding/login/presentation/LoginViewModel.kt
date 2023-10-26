@@ -4,6 +4,8 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import com.bankapp.components.navigation.RouteNavigator
+import com.bankapp.onboarding.utils.emailValidateInput
+import com.bankapp.onboarding.utils.passwordValidateInput
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -27,10 +29,12 @@ class LoginViewModel @Inject constructor(
 
     override fun onEmailChanged(string: String) {
         _email.value = string
+        _emailError.value = emailValidateInput(string)
     }
 
     override fun onPasswordChanged(string: String) {
         _password.value = string
+        _passwordError.value = passwordValidateInput(string)
     }
 
     override fun loginClicked() {

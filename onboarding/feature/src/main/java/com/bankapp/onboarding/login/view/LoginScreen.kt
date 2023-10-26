@@ -22,6 +22,7 @@ import com.bankapp.components.theme.BankappTheme
 import com.bankapp.onboarding.R
 import com.bankapp.onboarding.login.presentation.LoginPresenter
 import com.bankapp.onboarding.login.presentation.LoginPresenterPreview
+import com.bankapp.onboarding.utils.AsTextFieldError
 
 @Composable
 fun LoginScreen(
@@ -56,24 +57,14 @@ private fun Content(
 
 @Composable
 private fun EmailStateHolder(presenter: LoginPresenter) {
-    OutlinedTextField(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(bottom = 8.dp),
-        label = { Text(stringResource(R.string.feature_onboarding_label_email)) },
-        value = presenter.email.value,
-        onValueChange = { presenter.onEmailChanged(it) },
-    )
+    EmailInput(presenter)
+    EmailError(presenter)
 }
 
 @Composable
 private fun PasswordStateHolder(presenter: LoginPresenter) {
-    OutlinedTextField(
-        modifier = Modifier.fillMaxWidth(),
-        label = { Text(stringResource(R.string.feature_onboarding_label_password)) },
-        value = presenter.password.value,
-        onValueChange = { presenter.onPasswordChanged(it) },
-    )
+    PasswordInput(presenter)
+    PasswordError(presenter)
 }
 
 @Composable
@@ -95,6 +86,31 @@ private fun RegisterButton(presenter: LoginPresenter) = OutlinedButton(
 ) {
     Text(stringResource(R.string.feature_onboarding_button_register))
 }
+
+@Composable
+private fun EmailInput(presenter: LoginPresenter) = OutlinedTextField(
+    modifier = Modifier
+        .fillMaxWidth()
+        .padding(bottom = 8.dp),
+    label = { Text(stringResource(R.string.feature_onboarding_label_email)) },
+    value = presenter.email.value,
+    onValueChange = { presenter.onEmailChanged(it) },
+)
+
+@Composable
+private fun PasswordInput(presenter: LoginPresenter) = OutlinedTextField(
+    modifier = Modifier.fillMaxWidth(),
+    label = { Text(stringResource(R.string.feature_onboarding_label_password)) },
+    value = presenter.password.value,
+    onValueChange = { presenter.onPasswordChanged(it) },
+)
+
+@Composable
+private fun EmailError(presenter: LoginPresenter) = presenter.emailError.value.AsTextFieldError()
+
+@Composable
+private fun PasswordError(presenter: LoginPresenter) =
+    presenter.passwordError.value.AsTextFieldError()
 
 @UIModePreview
 @Composable
