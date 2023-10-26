@@ -14,5 +14,6 @@ fun NavGraphBuilder.onboardingGraph(
         route = ONBOARDING_GRAPH_ROUTE,
     ) {
         LoginRoute.composable(this, navHostController)
+        RegistrationRoute.composable(this, navHostController)
     }
 }

@@ -12,6 +12,7 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val routeNavigator: RouteNavigator,
+    private val navigateToRegistration: () -> Unit,
 ) : ViewModel(),
     LoginPresenter,
     RouteNavigator by routeNavigator {
@@ -42,6 +43,6 @@ class LoginViewModel @Inject constructor(
     }
 
     override fun registerClicked() {
-        TODO("Not yet implemented")
+        navigateToRegistration()
     }
 }
