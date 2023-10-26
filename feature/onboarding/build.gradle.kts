@@ -4,6 +4,7 @@ plugins {
     id("dagger.hilt.android.plugin")
     kotlin("kapt")
 }
+
 android {
     namespace = "com.bankapp.onboarding"
 
@@ -32,6 +33,7 @@ android {
 
 dependencies {
     implementation(project(":feature:components"))
+    implementation(project(":model:onboarding"))
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

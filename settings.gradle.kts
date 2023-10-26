@@ -5,6 +5,7 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -18,4 +19,5 @@ include(":app")
 include(":feature:onboarding")
 include(":feature:components")
 include(":feature:home")
+include(":model:onboarding")
 include(":core")
