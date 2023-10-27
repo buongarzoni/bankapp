@@ -47,6 +47,8 @@ dependencies {
     implementation("androidx.compose.material:material-icons-extended:1.5.4")
     implementation("com.google.android.material:material:1.10.0")
 
+    implementation("io.coil-kt:coil-compose:2.4.0")
+
     implementation("com.google.dagger:hilt-android:2.45")
     kapt("com.google.dagger:hilt-android-compiler:2.45")
 
