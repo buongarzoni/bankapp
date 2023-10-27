@@ -19,4 +19,15 @@
     <string name="onboarding_cd_last_name_placeholder">Last name input</string>
     <string name="feature_onboarding_label_last_name">Last name</string>
     <string name="feature_onboarding_button_next">Next</string>
+    <string name="onboarding_feature_cd_add_id_picture">Add id picture</string>
+    <string name="onboarding_feature_button_back">Back</string>
+    <string name="onboarding_feature_button_submit">Submit</string>
+    <string name="onboarding_feature_button_open_gallery">Gallery</string>
+    <string name="onboarding_feature_button_take_photo">Camera</string>
+    <string name="onboarding_feature_cd_take_photo">Take photo</string>
+    <string name="onboarding_feature_cd_open_gallery">Open gallery</string>
+    <string name="onboarding_feature_headline_take_picture_id">Please take a picture of your id</string>
+    <string name="onboarding_feature_cd_id_picture">A picture of the ID</string>
+    <string name="onboarding_feature_error_picture_id">Looks like there was a problem loading the image</string>
+    <string name="onboarding_feature_toast_camera_permission_revoked">You revoked camera permission</string>
 </resources>

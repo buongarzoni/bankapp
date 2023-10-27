@@ -1,5 +1,6 @@
 package com.bankapp.onboarding.register.presentation
 
+import android.net.Uri
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import com.bankapp.onboarding.register.domain.RegistrationView
@@ -17,11 +18,22 @@ class RegistrationPresenterPreview : RegistrationPresenter {
     override val emailError: State<Int?> = mutableStateOf(null)
     override val passwordError: State<Int?> = mutableStateOf(null)
 
+    override val showImageSourceDialog: State<Boolean> = mutableStateOf(false)
+    override val availableUri: State<Uri> = mutableStateOf(Uri.EMPTY)
+    override val uri: State<Uri?> = mutableStateOf(null)
+    override val uriError: State<Int?> = mutableStateOf(null)
+
     override fun onNameChange(string: String) = Unit
     override fun onLastNameChange(string: String) = Unit
     override fun onEmailChange(string: String) = Unit
     override fun onPasswordChange(string: String) = Unit
 
+    override fun addPictureClicked() = Unit
+    override fun dismissImageSourceDialog() = Unit
+    override fun onUriLoaded(uri: Uri?) = Unit
+
     override fun nextClicked() = Unit
+    override fun backClicked() = Unit
+    override fun submitClicked() = Unit
 
 }

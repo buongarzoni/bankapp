@@ -1,9 +1,11 @@
 package com.bankapp.onboarding.register.presentation
 
+import android.net.Uri
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import com.bankapp.components.navigation.RouteNavigator
+import com.bankapp.onboarding.R
 import com.bankapp.onboarding.register.domain.RegistrationView
 import com.bankapp.onboarding.utils.emailValidateInput
 import com.bankapp.onboarding.utils.nameValidateInput
@@ -14,6 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class RegistrationViewModel @Inject constructor(
     private val routeNavigator: RouteNavigator,
+    getNewUri: () -> Uri,
 ) : ViewModel(),
     RegistrationPresenter,
     RouteNavigator by routeNavigator {
@@ -45,6 +48,22 @@ class RegistrationViewModel @Inject constructor(
     private val _passwordError = mutableStateOf<Int?>(null)
     override val passwordError: State<Int?> = _passwordError
 
+    private val _showImageSourceDialog = mutableStateOf(false)
+    override val showImageSourceDialog: State<Boolean> = _showImageSourceDialog
+
+    private val _availableUri = mutableStateOf(Uri.EMPTY)
+    override val availableUri: State<Uri> = _availableUri
+
+    private val _uri = mutableStateOf<Uri?>(null)
+    override val uri: State<Uri?> = _uri
+
+    private val _uriError = mutableStateOf<Int?>(null)
+    override val uriError: State<Int?> = _uriError
+
+    init {
+        _availableUri.value = getNewUri()
+    }
+
     override fun onNameChange(string: String) {
         _name.value = string
         nameValidation()
@@ -65,6 +84,24 @@ class RegistrationViewModel @Inject constructor(
         passwordValidation()
     }
 
+    override fun addPictureClicked() {
+        _showImageSourceDialog.value = true
+    }
+
+    override fun dismissImageSourceDialog() {
+        _showImageSourceDialog.value = false
+    }
+
+    override fun onUriLoaded(uri: Uri?) {
+        if (uri != null) {
+            _uriError.value = null
+            _uri.value = uri
+            _showImageSourceDialog.value = false
+        } else {
+            _uriError.value = R.string.onboarding_feature_error_picture_id
+        }
+    }
+
     override fun nextClicked() {
         executeUserDataValidations()
         if (userDataIsValid()) {
@@ -72,8 +109,17 @@ class RegistrationViewModel @Inject constructor(
         }
     }
 
-    private fun userDataIsValid() = (_nameError.value == null && _lastNameError.value == null && _emailError.value == null && _passwordError.value == null
-            )
+    override fun backClicked() {
+        _registrationView.value = RegistrationView.UserDataView
+    }
+
+    override fun submitClicked() {
+        TODO("Not yet implemented")
+    }
+
+    private fun userDataIsValid() =
+        (_nameError.value == null && _lastNameError.value == null
+                && _emailError.value == null && _passwordError.value == null)
 
     private fun executeUserDataValidations() {
         nameValidation()
