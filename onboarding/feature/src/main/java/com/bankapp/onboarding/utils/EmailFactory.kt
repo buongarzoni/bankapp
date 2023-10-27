@@ -22,5 +22,5 @@ fun emailValidateInput(string: String): Int? {
 }
 
 private fun EmailError.mapToResourceId() = when (this) {
-    EmailError.MALFORMED -> R.string.onboarding_error_malformed_email
+    EmailError.MALFORMED -> R.string.onboarding_feature_error_malformed_email
 }

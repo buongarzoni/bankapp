@@ -22,7 +22,7 @@ fun passwordValidateInput(string: String): Int? {
 }
 
 private fun PasswordError.mapToResourceId() = when (this) {
-    PasswordError.LONG -> R.string.onboarding_error_password_long
-    PasswordError.SHORT -> R.string.onboarding_error_password_short
-    PasswordError.INVALID_CHARACTER -> R.string.onboarding_error_name_password_character
+    PasswordError.LONG -> R.string.onboarding_feature_error_password_long
+    PasswordError.SHORT -> R.string.onboarding_feature_error_password_short
+    PasswordError.INVALID_CHARACTER -> R.string.onboarding_feature_error_name_password_character
 }

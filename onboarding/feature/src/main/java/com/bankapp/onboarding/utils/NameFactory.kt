@@ -22,7 +22,7 @@ fun nameValidateInput(string: String): Int? {
 }
 
 private fun NameError.mapToResourceId() = when (this) {
-    NameError.LONG -> R.string.onboarding_error_name_long
-    NameError.SHORT -> R.string.onboarding_error_name_short
-    NameError.INVALID_CHARACTER -> R.string.onboarding_error_name_invalid_character
+    NameError.LONG -> R.string.onboarding_feature_error_name_long
+    NameError.SHORT -> R.string.onboarding_feature_error_name_short
+    NameError.INVALID_CHARACTER -> R.string.onboarding_feature_error_name_invalid_character
 }

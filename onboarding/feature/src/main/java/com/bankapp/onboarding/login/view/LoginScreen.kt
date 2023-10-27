@@ -76,7 +76,7 @@ private fun LoginButton(presenter: LoginPresenter) = Button(
         .padding(bottom = 8.dp),
     onClick = { presenter.loginClicked() },
 ) {
-    Text(stringResource(R.string.feature_onboarding_button_login))
+    Text(stringResource(R.string.onboarding_feature_button_login))
 }
 
 @Composable
@@ -86,7 +86,7 @@ private fun RegisterButton(presenter: LoginPresenter) = OutlinedButton(
         .padding(bottom = 8.dp),
     onClick = { presenter.registerClicked() }
 ) {
-    Text(stringResource(R.string.feature_onboarding_button_register))
+    Text(stringResource(R.string.onboarding_feature_button_register))
 }
 
 @UIModePreview

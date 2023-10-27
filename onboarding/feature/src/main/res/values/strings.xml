@@ -1,33 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="feature_onboarding_label_email">Email</string>
-    <string name="feature_onboarding_label_password">Password</string>
-    <string name="feature_onboarding_button_login">Login</string>
-    <string name="feature_onboarding_button_register">Register</string>
-    <string name="onboarding_error_malformed_email">Looks like this email is invalid</string>
-    <string name="onboarding_error_name_long">Name is too long, must contain 20 characters max</string>
-    <string name="onboarding_error_name_short">Name is too short, must contain 2 or more characters</string>
-    <string name="onboarding_error_name_invalid_character">Name contains invalid characters, please use a characters between a-z</string>
-    <string name="onboarding_error_password_long">Password is too long, must contain 32 characters max</string>
-    <string name="onboarding_error_password_short">Password is too short, must contain 8 or more characters</string>
-    <string name="onboarding_error_name_password_character">Password contains invalid characters, only alphanumeric or \'-\' and \'_\' are allowed</string>
-    <string name="onboarding_cd_hide_password">Hide password</string>
-    <string name="onboarding_cd_show_password">Show password</string>
-    <string name="onboarding_cd_email_placeholder">Email input</string>
-    <string name="feature_onboarding_label_name">Name</string>
-    <string name="onboarding_cd_name_placeholder">Name input</string>
-    <string name="onboarding_cd_last_name_placeholder">Last name input</string>
-    <string name="feature_onboarding_label_last_name">Last name</string>
-    <string name="feature_onboarding_button_next">Next</string>
-    <string name="onboarding_feature_cd_add_id_picture">Add id picture</string>
+    <string name="onboarding_feature_label_email">Email</string>
+    <string name="onboarding_feature_label_password">Password</string>
+    <string name="onboarding_feature_label_last_name">Last name</string>
+    <string name="onboarding_feature_label_name">Name</string>
+
+    <string name="onboarding_feature_button_login">Login</string>
+    <string name="onboarding_feature_button_register">Register</string>
+    <string name="onboarding_feature_button_next">Next</string>
     <string name="onboarding_feature_button_back">Back</string>
     <string name="onboarding_feature_button_submit">Submit</string>
     <string name="onboarding_feature_button_open_gallery">Gallery</string>
     <string name="onboarding_feature_button_take_photo">Camera</string>
+
+    <string name="onboarding_feature_headline_take_picture_id">Please take a picture of your id</string>
+
+    <string name="onboarding_feature_toast_camera_permission_revoked">You revoked camera permission</string>
+
+    <string name="onboarding_feature_error_malformed_email">Looks like this email is invalid</string>
+    <string name="onboarding_feature_error_name_long">Name is too long, must contain 20 characters max</string>
+    <string name="onboarding_feature_error_name_short">Name is too short, must contain 2 or more characters</string>
+    <string name="onboarding_feature_error_name_invalid_character">Name contains invalid characters, please use a characters between a-z</string>
+    <string name="onboarding_feature_error_password_long">Password is too long, must contain 32 characters max</string>
+    <string name="onboarding_feature_error_password_short">Password is too short, must contain 8 or more characters</string>
+    <string name="onboarding_feature_error_name_password_character">Password contains invalid characters, only alphanumeric or \'-\' and \'_\' are allowed</string>
+    <string name="onboarding_feature_error_picture_id">Looks like there was a problem loading the image</string>
+
+    <string name="onboarding_feature_cd_hide_password">Hide password</string>
+    <string name="onboarding_feature_cd_show_password">Show password</string>
+    <string name="onboarding_feature_cd_email_placeholder">Email input</string>
+    <string name="onboarding_feature_cd_name_placeholder">Name input</string>
+    <string name="onboarding_feature_cd_last_name_placeholder">Last name input</string>
+    <string name="onboarding_feature_cd_add_id_picture">Add id picture</string>
     <string name="onboarding_feature_cd_take_photo">Take photo</string>
     <string name="onboarding_feature_cd_open_gallery">Open gallery</string>
-    <string name="onboarding_feature_headline_take_picture_id">Please take a picture of your id</string>
     <string name="onboarding_feature_cd_id_picture">A picture of the ID</string>
-    <string name="onboarding_feature_error_picture_id">Looks like there was a problem loading the image</string>
-    <string name="onboarding_feature_toast_camera_permission_revoked">You revoked camera permission</string>
 </resources>

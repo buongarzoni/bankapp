@@ -54,19 +54,19 @@ private fun PasswordInput(
                 IconButton(onClick = { showPassword.value = false }) {
                     Icon(
                         imageVector = Icons.Filled.Visibility,
-                        contentDescription = stringResource(id = R.string.onboarding_cd_hide_password)
+                        contentDescription = stringResource(id = R.string.onboarding_feature_cd_hide_password)
                     )
                 }
             } else {
                 IconButton(onClick = { showPassword.value = true }) {
                     Icon(
                         imageVector = Icons.Filled.VisibilityOff,
-                        contentDescription = stringResource(id = R.string.onboarding_cd_show_password)
+                        contentDescription = stringResource(id = R.string.onboarding_feature_cd_show_password)
                     )
                 }
             }
         },
-        label = { Text(stringResource(R.string.feature_onboarding_label_password)) },
+        label = { Text(stringResource(R.string.onboarding_feature_label_password)) },
         visualTransformation = if (showPassword.value) VisualTransformation.None else PasswordVisualTransformation(),
         value = value,
         onValueChange = { onPasswordChange(it) },
@@ -81,11 +81,11 @@ private fun EmailInput(
     modifier = Modifier
         .fillMaxWidth()
         .padding(bottom = 8.dp),
-    label = { Text(stringResource(R.string.feature_onboarding_label_email)) },
+    label = { Text(stringResource(R.string.onboarding_feature_label_email)) },
     leadingIcon = {
         Icon(
             imageVector = Icons.Filled.Email,
-            contentDescription = stringResource(R.string.onboarding_cd_email_placeholder),
+            contentDescription = stringResource(R.string.onboarding_feature_cd_email_placeholder),
         )
     },
     value = value,

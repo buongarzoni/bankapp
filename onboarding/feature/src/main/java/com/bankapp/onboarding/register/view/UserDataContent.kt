@@ -81,7 +81,7 @@ private fun NextButton(presenter: RegistrationPresenter) = Button(
     modifier = Modifier.fillMaxWidth(0.4f),
     onClick = { presenter.nextClicked() },
 ) {
-    Text(stringResource(R.string.feature_onboarding_button_next))
+    Text(stringResource(R.string.onboarding_feature_button_next))
 }
 
 @Composable
@@ -90,11 +90,11 @@ private fun NameInput(presenter: RegistrationPresenter) = OutlinedTextField(
         .fillMaxWidth()
         .padding(bottom = 8.dp),
     keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Sentences),
-    label = { Text(stringResource(R.string.feature_onboarding_label_name)) },
+    label = { Text(stringResource(R.string.onboarding_feature_label_name)) },
     leadingIcon = {
         Icon(
             imageVector = Icons.Filled.Person,
-            contentDescription = stringResource(R.string.onboarding_cd_name_placeholder),
+            contentDescription = stringResource(R.string.onboarding_feature_cd_name_placeholder),
         )
     },
     value = presenter.name.value,
@@ -107,11 +107,11 @@ private fun LastNameInput(presenter: RegistrationPresenter) = OutlinedTextField(
         .fillMaxWidth()
         .padding(bottom = 8.dp),
     keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Sentences),
-    label = { Text(stringResource(R.string.feature_onboarding_label_last_name)) },
+    label = { Text(stringResource(R.string.onboarding_feature_label_last_name)) },
     leadingIcon = {
         Icon(
             imageVector = Icons.Filled.Person,
-            contentDescription = stringResource(R.string.onboarding_cd_last_name_placeholder),
+            contentDescription = stringResource(R.string.onboarding_feature_cd_last_name_placeholder),
         )
     },
     value = presenter.lastName.value,
