@@ -14,4 +14,9 @@
     <string name="onboarding_cd_hide_password">Hide password</string>
     <string name="onboarding_cd_show_password">Show password</string>
     <string name="onboarding_cd_email_placeholder">Email input</string>
+    <string name="feature_onboarding_label_name">Name</string>
+    <string name="onboarding_cd_name_placeholder">Name input</string>
+    <string name="onboarding_cd_last_name_placeholder">Last name input</string>
+    <string name="feature_onboarding_label_last_name">Last name</string>
+    <string name="feature_onboarding_button_next">Next</string>
 </resources>
