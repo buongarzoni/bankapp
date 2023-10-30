@@ -6,6 +6,7 @@ import com.bankapp.core.domain.success
 import com.bankapp.core.user.UserId
 import com.bankapp.onboarding.domain.Email
 import com.bankapp.onboarding.domain.Password
+import com.google.android.gms.tasks.Tasks
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
@@ -15,14 +16,8 @@ import com.bankapp.core.auth.Auth as AuthCore
 import com.bankapp.onboarding.domain.Auth as AuthOnboarding
 
 class FirebaseAuth(
-    private val firebaseAuth: FirebaseAuth,
+    private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance(),
 ) : AuthOnboarding, AuthCore {
-    private val noLoggedUserError = R.string.infrastructure_auth_firebase_error_no_logged_user
-    private val invalidIdError = R.string.infrastructure_auth_firebase_error_invalid_id
-    private val emailCollisionError = R.string.infrastructure_auth_firebase_error_email_collision
-    private val weakPasswordError = R.string.infrastructure_auth_firebase_error_weak_password
-    private val invalidCredentialsError = R.string.infrastructure_auth_firebase_error_invalid_credentials
-    private val unknownError = R.string.infrastructure_auth_firebase_error_unknown_error
 
     override fun getLoggedUserId(): Either<Int, UserId> {
         val id = firebaseAuth.currentUser?.uid ?: return noLoggedUserError.error()
@@ -39,7 +34,7 @@ class FirebaseAuth(
     ): Either<Int, Unit> {
         var error: Int? = null
 
-        firebaseAuth.createUserWithEmailAndPassword(email.value, password.value)
+        val task = firebaseAuth.createUserWithEmailAndPassword(email.value, password.value)
             .addOnFailureListener {
                 error = when (it) {
                     is FirebaseAuthUserCollisionException -> emailCollisionError
@@ -48,14 +43,19 @@ class FirebaseAuth(
 
                     is FirebaseAuthInvalidCredentialsException -> invalidCredentialsError
 
-                    else -> {
-                        //Todo add log
-                        unknownError
-                    }
+                    else -> unknownError
                 }
             }
-            .await()
+        Tasks.whenAllComplete(task).await()
 
         return if (error == null) Unit.success() else error!!.error()
     }
+
+    private val noLoggedUserError = R.string.infrastructure_auth_firebase_error_no_logged_user
+    private val invalidIdError = R.string.infrastructure_auth_firebase_error_invalid_id
+    private val emailCollisionError = R.string.infrastructure_auth_firebase_error_email_collision
+    private val weakPasswordError = R.string.infrastructure_auth_firebase_error_weak_password
+    private val invalidCredentialsError = R.string.infrastructure_auth_firebase_error_invalid_credentials
+    private val unknownError = R.string.infrastructure_auth_firebase_error_unknown_error
+
 }
