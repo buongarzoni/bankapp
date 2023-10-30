@@ -36,6 +36,7 @@ interface RegistrationPresenter {
     fun nextClicked()
     fun backClicked()
     fun submitClicked()
+    fun confirmSuccessClicked()
 
     fun dismissErrorState()
 }

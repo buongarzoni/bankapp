@@ -37,6 +37,7 @@ class RegistrationPresenterPreview : RegistrationPresenter {
     override fun nextClicked() = Unit
     override fun backClicked() = Unit
     override fun submitClicked() = Unit
+    override fun confirmSuccessClicked() = Unit
 
     override fun dismissErrorState() = Unit
 }

@@ -36,6 +36,7 @@ class RegistrationViewModel @Inject constructor(
     private val routeNavigator: RouteNavigator,
     private val application: Application,
     private val registerUser: RegisterUser,
+    private val navigateOnSuccessRegistration: () -> Unit,
     getNewUri: () -> Uri,
 ) : ViewModel(),
     RegistrationPresenter,
@@ -162,6 +163,10 @@ class RegistrationViewModel @Inject constructor(
 
     override fun dismissErrorState() {
         _registrationState.value = RegistrationState.Idle
+    }
+
+    override fun confirmSuccessClicked() {
+        navigateOnSuccessRegistration()
     }
 
     private fun isSubmissionComplete() = userDataIsValid() && _uriError.value == null
