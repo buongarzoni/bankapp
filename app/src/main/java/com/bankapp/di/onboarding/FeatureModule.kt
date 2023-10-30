@@ -1,8 +1,10 @@
 package com.bankapp.di.onboarding
 
+import android.app.Application
 import android.content.Context
 import com.bankapp.components.navigation.RouteNavigator
 import com.bankapp.navigation.graphs.onboarding.RegistrationRoute
+import com.bankapp.onboarding.actions.RegisterUser
 import com.bankapp.onboarding.login.presentation.LoginViewModel
 import com.bankapp.onboarding.register.presentation.RegistrationViewModel
 import com.bankapp.utils.UriProvider
@@ -30,9 +32,13 @@ class FeatureModule {
     @Provides
     fun registrationViewModel(
         routeNavigator: RouteNavigator,
+        application: Application,
+        registerUser: RegisterUser,
         uriProvider: UriProvider,
     ) = RegistrationViewModel(
         routeNavigator = routeNavigator,
+        application = application,
+        registerUser = registerUser,
         getNewUri = { uriProvider.newUri() },
     )
 
