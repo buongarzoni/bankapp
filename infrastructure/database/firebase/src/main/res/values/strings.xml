@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="infrastructure_database_firebase_error_can_not_upload_photo">Looks like there was a problem uploading your photo, please retry later</string>
+    <string name="infrastructure_database_firebase_error_can_not_save_user">Looks like there was a problem saving your user information, please retry later</string>
+</resources>
