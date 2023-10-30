@@ -116,7 +116,7 @@ private fun BackButton(
     presenter: RegistrationPresenter,
 ) = OutlinedButton(
     modifier = modifier,
-    onClick = { presenter.nextClicked() },
+    onClick = { presenter.backClicked() },
 ) {
     Text(stringResource(R.string.onboarding_feature_button_back))
 }
@@ -127,7 +127,7 @@ private fun SubmitButton(
     presenter: RegistrationPresenter,
 ) = Button(
     modifier = modifier,
-    onClick = { presenter.nextClicked() },
+    onClick = { presenter.submitClicked() },
 ) {
     Text(stringResource(R.string.onboarding_feature_button_submit))
 }
