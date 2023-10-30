@@ -2,4 +2,6 @@
 <resources>
     <string name="infrastructure_database_firebase_error_can_not_upload_photo">Looks like there was a problem uploading your photo, please retry later</string>
     <string name="infrastructure_database_firebase_error_can_not_save_user">Looks like there was a problem saving your user information, please retry later</string>
+    <string name="infrastructure_database_firebase_error_unknown">Unknown error</string>
+    <string name="infrastructure_database_firebase_error_fetching_bank_details">Ups! Looks like there was a problem retrieving your bank details, please retry later</string>
 </resources>
