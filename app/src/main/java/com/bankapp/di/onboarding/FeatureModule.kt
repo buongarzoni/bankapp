@@ -5,6 +5,7 @@ import android.content.Context
 import com.bankapp.components.navigation.RouteNavigator
 import com.bankapp.navigation.graphs.home.HOME_GRAPH_ROUTE
 import com.bankapp.navigation.graphs.onboarding.RegistrationRoute
+import com.bankapp.onboarding.actions.Login
 import com.bankapp.onboarding.actions.RegisterUser
 import com.bankapp.onboarding.login.presentation.LoginViewModel
 import com.bankapp.onboarding.register.presentation.RegistrationViewModel
@@ -23,9 +24,12 @@ class FeatureModule {
     @ViewModelScoped
     @Provides
     fun loginViewModel(
+        login: Login,
         routeNavigator: RouteNavigator,
     ) = LoginViewModel(
         routeNavigator = routeNavigator,
+        login = login,
+        navigateOnSuccessLogin = { routeNavigator.navigateToGraph(HOME_GRAPH_ROUTE) },
         navigateToRegistration = { routeNavigator.navigateToRoute(RegistrationRoute.route) },
     )
 

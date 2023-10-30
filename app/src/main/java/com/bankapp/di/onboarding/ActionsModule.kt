@@ -1,5 +1,6 @@
 package com.bankapp.di.onboarding
 
+import com.bankapp.onboarding.actions.Login
 import com.bankapp.core.auth.Auth as AuthCore
 import com.bankapp.onboarding.actions.RegisterUser
 import com.bankapp.onboarding.domain.Users
@@ -23,5 +24,13 @@ class ActionsModule {
         auth = authOnboarding,
         authCore = authCore,
         users = users,
+    )
+
+    @ViewModelScoped
+    @Provides
+    fun provideLogin(
+        authOnboarding: AuthOnboarding,
+    ) = Login(
+        auth = authOnboarding,
     )
 }
