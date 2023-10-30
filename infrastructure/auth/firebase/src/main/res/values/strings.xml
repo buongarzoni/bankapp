@@ -6,4 +6,5 @@
     <string name="infrastructure_auth_firebase_error_invalid_credentials">Invalid email</string>
     <string name="infrastructure_auth_firebase_error_weak_password">Weak password</string>
     <string name="infrastructure_auth_firebase_error_unknown_error">Unknown auth error</string>
+    <string name="infrastructure_auth_firebase_error_network">Looks like there is a network error, please retry later</string>
 </resources>

@@ -7,6 +7,7 @@ import com.bankapp.core.user.UserId
 import com.bankapp.onboarding.domain.Email
 import com.bankapp.onboarding.domain.Password
 import com.google.android.gms.tasks.Tasks
+import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
@@ -43,6 +44,8 @@ class FirebaseAuth(
 
                     is FirebaseAuthInvalidCredentialsException -> invalidCredentialsError
 
+                    is FirebaseNetworkException -> networkError
+
                     else -> unknownError
                 }
             }
@@ -56,6 +59,7 @@ class FirebaseAuth(
     private val emailCollisionError = R.string.infrastructure_auth_firebase_error_email_collision
     private val weakPasswordError = R.string.infrastructure_auth_firebase_error_weak_password
     private val invalidCredentialsError = R.string.infrastructure_auth_firebase_error_invalid_credentials
+    private val networkError = R.string.infrastructure_auth_firebase_error_network
     private val unknownError = R.string.infrastructure_auth_firebase_error_unknown_error
 
 }
