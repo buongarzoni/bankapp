@@ -45,6 +45,7 @@ dependencies {
     implementation(project(":core"))
     implementation(project(":components"))
     implementation(project(":home:feature"))
+    implementation(project(":home:model"))
     implementation(project(":onboarding:feature"))
     implementation(project(":onboarding:model"))
     implementation(project(":infrastructure:database:firebase"))
