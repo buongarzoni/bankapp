@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.gms.google-services")
     id("dagger.hilt.android.plugin")
     kotlin("kapt")
 }
@@ -55,6 +56,7 @@ dependencies {
 
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
     implementation("com.google.dagger:hilt-android:2.45")
+    implementation(platform("com.google.firebase:firebase-bom:32.4.0"))
     kapt("com.google.dagger:hilt-android-compiler:2.45")
     implementation("androidx.navigation:navigation-compose:2.7.4")
 
