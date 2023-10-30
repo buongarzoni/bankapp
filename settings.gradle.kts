@@ -17,9 +17,9 @@ dependencyResolutionManagement {
 rootProject.name = "bankapp"
 include(":app")
 include(":core")
+include(":components")
 include(":onboarding:feature")
 include(":onboarding:model")
-include(":components")
-include(":feature:home")
+include(":home:feature")
 include(":infrastructure:auth:firebase")
 include(":infrastructure:database:firebase")
