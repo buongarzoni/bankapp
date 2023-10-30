@@ -65,6 +65,9 @@ interface NavRoute<T : RouteNavigator> {
             is NavigationState.NavigateToGraph -> {
                 navHostController.popBackStack()
                 navHostController.navigate(navigationState.graph) {
+                    popUpTo(navHostController.graph.id) {
+                        inclusive = true
+                    }
                     launchSingleTop = true
                 }
                 onNavigated(navigationState)
