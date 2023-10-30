@@ -3,6 +3,7 @@ package com.bankapp.di.onboarding
 import android.app.Application
 import android.content.Context
 import com.bankapp.components.navigation.RouteNavigator
+import com.bankapp.navigation.graphs.home.HOME_GRAPH_ROUTE
 import com.bankapp.navigation.graphs.onboarding.RegistrationRoute
 import com.bankapp.onboarding.actions.RegisterUser
 import com.bankapp.onboarding.login.presentation.LoginViewModel
@@ -39,6 +40,7 @@ class FeatureModule {
         routeNavigator = routeNavigator,
         application = application,
         registerUser = registerUser,
+        navigateOnSuccessRegistration = { routeNavigator.navigateToGraph(HOME_GRAPH_ROUTE) },
         getNewUri = { uriProvider.newUri() },
     )
 
