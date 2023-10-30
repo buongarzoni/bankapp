@@ -1,8 +1,11 @@
 package com.bankapp.onboarding.login.presentation
 
 import androidx.compose.runtime.State
+import com.bankapp.onboarding.login.domain.LoginState
 
 interface LoginPresenter {
+    val loginState: State<LoginState>
+
     val email: State<String>
     val emailError: State<Int?>
 
@@ -13,4 +16,5 @@ interface LoginPresenter {
     fun onPasswordChanged(string: String)
     fun loginClicked()
     fun registerClicked()
+    fun dismissError()
 }

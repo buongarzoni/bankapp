@@ -1,5 +1,6 @@
 package com.bankapp.onboarding.login.view
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,12 +16,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.bankapp.components.modal.ErrorModal
+import com.bankapp.components.modal.LoadingModal
 import com.bankapp.components.preview.UIModePreview
 import com.bankapp.components.screen.BankTopAppBar
 import com.bankapp.components.theme.BankappTheme
 import com.bankapp.onboarding.R
 import com.bankapp.onboarding.components.EmailPlaceholder
 import com.bankapp.onboarding.components.PasswordPlaceholder
+import com.bankapp.onboarding.login.domain.LoginState
 import com.bankapp.onboarding.login.presentation.LoginPresenter
 import com.bankapp.onboarding.login.presentation.LoginPresenterPreview
 
@@ -37,9 +41,10 @@ fun LoginScreen(
 private fun Content(
     modifier: Modifier,
     presenter: LoginPresenter,
-) {
+) = Box(modifier = modifier) {
+    LoginStateHandler(presenter)
     LazyColumn(
-        modifier = modifier
+        modifier = Modifier
             .padding(horizontal = 32.dp)
             .padding(top = 16.dp)
             .fillMaxSize(),
@@ -52,6 +57,21 @@ private fun Content(
             LoginButton(presenter)
             RegisterButton(presenter)
         }
+    }
+}
+
+@Composable
+private fun LoginStateHandler(presenter: LoginPresenter) {
+    when(val state = presenter.loginState.value) {
+        is LoginState.Error -> ErrorModal(
+            onDismiss = { presenter.dismissError() },
+            onConfirm = { presenter.dismissError() },
+            text = stringResource(id = state.resId),
+        )
+        LoginState.Idle -> Unit
+        LoginState.Loading -> LoadingModal(
+            title = stringResource(id = R.string.onboarding_feature_headline_loading_registration),
+        ) { /* can not dismiss */ }
     }
 }
 
