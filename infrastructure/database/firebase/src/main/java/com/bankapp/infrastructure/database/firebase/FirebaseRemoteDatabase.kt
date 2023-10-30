@@ -7,6 +7,7 @@ import com.bankapp.core.user.UserId
 import com.bankapp.infrastructure.database.firebase.onboarding.register.NewUserDTO
 import com.bankapp.onboarding.domain.RegistrationData
 import com.bankapp.onboarding.domain.Users
+import com.google.android.gms.tasks.Tasks
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.tasks.await
@@ -36,10 +37,10 @@ class FirebaseRemoteDatabase(
         var error: Int? = null
         var path: String? = null
 
-        saveIdPhotoTask(userId, registrationData)
+        val task = saveIdPhotoTask(userId, registrationData)
             .addOnSuccessListener { path = it.storage.path }
             .addOnFailureListener { error = uploadPhotoError }
-            .await()
+        Tasks.whenAllComplete(task).await()
 
         return if (error != null) error!!.error() else path!!.success()
     }
@@ -47,9 +48,8 @@ class FirebaseRemoteDatabase(
     private suspend fun saveUserData(newUserDTO: NewUserDTO): Either<Int, Unit> {
         var error: Int? = null
 
-        saveUserTask(newUserDTO)
-            .addOnFailureListener { error = savingUserError }
-            .await()
+        val task = saveUserTask(newUserDTO).addOnFailureListener { error = savingUserError }
+        Tasks.whenAllComplete(task).await()
 
         return if (error != null) error!!.error() else Unit.success()
     }
