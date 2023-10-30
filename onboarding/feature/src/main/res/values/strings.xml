@@ -24,7 +24,8 @@
     <string name="onboarding_feature_error_password_long">Password is too long, must contain 32 characters max</string>
     <string name="onboarding_feature_error_password_short">Password is too short, must contain 8 or more characters</string>
     <string name="onboarding_feature_error_name_password_character">Password contains invalid characters, only alphanumeric or \'-\' and \'_\' are allowed</string>
-    <string name="onboarding_feature_error_picture_id">Looks like there was a problem loading the image</string>
+    <string name="onboarding_feature_error_null_uri">Looks like no image was selected</string>
+    <string name="onboarding_feature_error_loading_picture_id">Looks like there was a problem loading the image</string>
 
     <string name="onboarding_feature_cd_hide_password">Hide password</string>
     <string name="onboarding_feature_cd_show_password">Show password</string>
@@ -36,4 +37,5 @@
     <string name="onboarding_feature_cd_open_gallery">Open gallery</string>
     <string name="onboarding_feature_cd_id_picture">A picture of the ID</string>
     <string name="onboarding_feature_headline_loading_registration">Loading, this process can take up to 10 seconds</string>
+    <string name="onboarding_feature_error_registration_timeout">Ups! Looks like this operation is taking too long, please retry it later with better internet connection</string>
 </resources>
