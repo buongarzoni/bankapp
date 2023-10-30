@@ -7,4 +7,9 @@ interface Auth {
         email: Email,
         password: Password,
     ): Either<Int, Unit>
+
+    suspend fun login(
+        email: Email,
+        password: Password,
+    ): Either<Int, Unit>
 }
