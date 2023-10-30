@@ -42,8 +42,12 @@ android {
 }
 
 dependencies {
+    implementation(project(":core"))
     implementation(project(":components"))
     implementation(project(":onboarding:feature"))
+    implementation(project(":onboarding:model"))
+    implementation(project(":infrastructure:database:firebase"))
+    implementation(project(":infrastructure:auth:firebase"))
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
@@ -56,7 +60,12 @@ dependencies {
 
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
     implementation("com.google.dagger:hilt-android:2.45")
+    
     implementation(platform("com.google.firebase:firebase-bom:32.4.0"))
+    implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.firebase:firebase-firestore-ktx")
+    implementation("com.google.firebase:firebase-storage-ktx")
+
     kapt("com.google.dagger:hilt-android-compiler:2.45")
     implementation("androidx.navigation:navigation-compose:2.7.4")
 
