@@ -44,6 +44,7 @@ android {
 dependencies {
     implementation(project(":core"))
     implementation(project(":components"))
+    implementation(project(":home:feature"))
     implementation(project(":onboarding:feature"))
     implementation(project(":onboarding:model"))
     implementation(project(":infrastructure:database:firebase"))
@@ -60,7 +61,7 @@ dependencies {
 
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
     implementation("com.google.dagger:hilt-android:2.45")
-    
+
     implementation(platform("com.google.firebase:firebase-bom:32.4.0"))
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-firestore-ktx")
