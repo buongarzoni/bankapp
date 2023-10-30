@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="infrastructure_auth_firebase_error_no_logged_user">No logged user</string>
+    <string name="infrastructure_auth_firebase_error_invalid_id">Internal error, invalid id</string>
+    <string name="infrastructure_auth_firebase_error_email_collision">Email already registered</string>
+    <string name="infrastructure_auth_firebase_error_invalid_credentials">Invalid email</string>
+    <string name="infrastructure_auth_firebase_error_weak_password">Weak password</string>
+    <string name="infrastructure_auth_firebase_error_unknown_error">Unknown auth error</string>
+</resources>
