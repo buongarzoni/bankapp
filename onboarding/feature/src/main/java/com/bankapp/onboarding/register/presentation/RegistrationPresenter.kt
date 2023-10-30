@@ -2,10 +2,12 @@ package com.bankapp.onboarding.register.presentation
 
 import android.net.Uri
 import androidx.compose.runtime.State
+import com.bankapp.onboarding.register.domain.RegistrationState
 import com.bankapp.onboarding.register.domain.RegistrationView
 
 interface RegistrationPresenter {
     val registrationView: State<RegistrationView>
+    val registrationState: State<RegistrationState>
 
     val name: State<String>
     val lastName: State<String>
@@ -35,4 +37,5 @@ interface RegistrationPresenter {
     fun backClicked()
     fun submitClicked()
 
+    fun dismissErrorState()
 }

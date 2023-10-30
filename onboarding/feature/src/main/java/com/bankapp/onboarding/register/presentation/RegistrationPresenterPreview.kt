@@ -3,10 +3,12 @@ package com.bankapp.onboarding.register.presentation
 import android.net.Uri
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
+import com.bankapp.onboarding.register.domain.RegistrationState
 import com.bankapp.onboarding.register.domain.RegistrationView
 
 class RegistrationPresenterPreview : RegistrationPresenter {
     override val registrationView = mutableStateOf<RegistrationView>(RegistrationView.UserDataView)
+    override val registrationState: State<RegistrationState> = mutableStateOf(RegistrationState.Idle)
 
     override val name: State<String> = mutableStateOf("Christian")
     override val lastName: State<String> = mutableStateOf("Buongarzoni")
@@ -36,4 +38,5 @@ class RegistrationPresenterPreview : RegistrationPresenter {
     override fun backClicked() = Unit
     override fun submitClicked() = Unit
 
+    override fun dismissErrorState() = Unit
 }

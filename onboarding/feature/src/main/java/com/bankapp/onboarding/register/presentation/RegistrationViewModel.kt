@@ -6,6 +6,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import com.bankapp.components.navigation.RouteNavigator
 import com.bankapp.onboarding.R
+import com.bankapp.onboarding.register.domain.RegistrationState
 import com.bankapp.onboarding.register.domain.RegistrationView
 import com.bankapp.onboarding.utils.emailValidateInput
 import com.bankapp.onboarding.utils.nameValidateInput
@@ -23,6 +24,9 @@ class RegistrationViewModel @Inject constructor(
 
     private val _registrationView = mutableStateOf<RegistrationView>(RegistrationView.UserDataView)
     override val registrationView: State<RegistrationView> = _registrationView
+
+    private val _registrationState = mutableStateOf<RegistrationState>(RegistrationState.Idle)
+    override val registrationState: State<RegistrationState> = _registrationState
 
     private val _name = mutableStateOf("")
     override val name: State<String> = _name
@@ -114,12 +118,28 @@ class RegistrationViewModel @Inject constructor(
     }
 
     override fun submitClicked() {
-        TODO("Not yet implemented")
+        _registrationState.value = RegistrationState.Loading
+        executeAllValidations()
+        if (isSubmissionComplete()) {
+            //TODO call action
+        }
+        _registrationState.value = RegistrationState.Idle
     }
+
+    override fun dismissErrorState() {
+        _registrationState.value = RegistrationState.Idle
+    }
+
+    private fun isSubmissionComplete() = userDataIsValid() && _uriError.value == null
 
     private fun userDataIsValid() =
         (_nameError.value == null && _lastNameError.value == null
                 && _emailError.value == null && _passwordError.value == null)
+
+    private fun executeAllValidations() {
+        executeUserDataValidations()
+        imageValidation()
+    }
 
     private fun executeUserDataValidations() {
         nameValidation()
@@ -143,4 +163,9 @@ class RegistrationViewModel @Inject constructor(
     private fun passwordValidation() {
         _passwordError.value = passwordValidateInput(_password.value)
     }
+
+    private fun imageValidation() {
+        //val uri = _uri.value TODO
+    }
+
 }

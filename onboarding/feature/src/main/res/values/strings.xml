@@ -35,4 +35,5 @@
     <string name="onboarding_feature_cd_take_photo">Take photo</string>
     <string name="onboarding_feature_cd_open_gallery">Open gallery</string>
     <string name="onboarding_feature_cd_id_picture">A picture of the ID</string>
+    <string name="onboarding_feature_headline_loading_registration">Loading, this process can take up to 10 seconds</string>
 </resources>
