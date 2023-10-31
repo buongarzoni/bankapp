@@ -23,7 +23,6 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.bankapp.home.feature.R
 import com.bankapp.home.feature.main.domain.ToUI
@@ -76,7 +75,6 @@ fun MovementDetailView(
                         modifier = Modifier.fillMaxWidth(),
                         text = movement.date.toString(),
                         style = MaterialTheme.typography.bodySmall,
-                        fontWeight = FontWeight.ExtraLight,
                     )
                     Spacer(modifier = Modifier.height(32.dp))
                     movement.amount.ToUI()
@@ -84,7 +82,7 @@ fun MovementDetailView(
                     if (movement.extraInformation.string.isNotBlank()) {
                         Card(
                             colors = CardDefaults.cardColors(
-                                containerColor = MaterialTheme.colorScheme.surfaceVariant,
+                                containerColor = MaterialTheme.colorScheme.background,
                             )
                         ) {
                             Text(
