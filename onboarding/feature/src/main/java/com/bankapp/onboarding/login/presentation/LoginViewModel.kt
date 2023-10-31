@@ -58,7 +58,10 @@ class LoginViewModel @Inject constructor(
             viewModelScope.launch {
                 when(val loginResult = executeLogin()) {
                     is Either.Error -> _loginState.value = LoginState.Error(loginResult.error)
-                    is Either.Success -> navigateOnSuccessLogin()
+                    is Either.Success -> {
+                        _loginState.value = LoginState.Idle
+                        navigateOnSuccessLogin()
+                    }
                 }
             }
         }
