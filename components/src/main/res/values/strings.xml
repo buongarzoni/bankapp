@@ -3,5 +3,8 @@
     <string name="components_headline_error_modal">Error</string>
 
     <string name="components_button_confirm">Confirm</string>
+
     <string name="components_top_app_bar_app_name">BankApp</string>
+
+    <string name="components_label_animated_slide_transition">Animated transition</string>
 </resources>
