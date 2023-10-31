@@ -1,10 +1,5 @@
 package com.bankapp.home.feature.main.view
 
-import androidx.compose.animation.AnimatedContent
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.slideInHorizontally
-import androidx.compose.animation.slideOutHorizontally
-import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -28,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.bankapp.components.animations.AnimatedSlide
 import com.bankapp.components.modal.ErrorModal
 import com.bankapp.components.modal.LoadingModal
 import com.bankapp.components.screen.BankTopAppBar
@@ -40,37 +36,15 @@ import com.bankapp.home.model.domain.AccountBalance
 import com.bankapp.home.model.domain.Amount
 import com.bankapp.home.model.domain.Movement
 
-private const val CONTENT_ANIMATION_DURATION = 250
-
 @Composable
 fun MainScreen(
     presenter: MainPresenter,
 ) {
     FetchingStateHandler(presenter)
     val view = presenter.view.value
-    AnimatedContent(
+    AnimatedSlide(
         targetState = view,
-        label = "",
-        transitionSpec = {
-            if (view is View.Home) {
-                slideInHorizontally(
-                    animationSpec = tween(CONTENT_ANIMATION_DURATION),
-                    initialOffsetX = { fullWidth -> -fullWidth }
-                ) togetherWith slideOutHorizontally(
-                    animationSpec = tween(CONTENT_ANIMATION_DURATION),
-                    targetOffsetX = { fullWidth -> fullWidth }
-                )
-
-            } else {
-                slideInHorizontally(
-                    animationSpec = tween(CONTENT_ANIMATION_DURATION),
-                    initialOffsetX = { fullWidth -> fullWidth }
-                ) togetherWith slideOutHorizontally(
-                    animationSpec = tween(CONTENT_ANIMATION_DURATION),
-                    targetOffsetX = { fullWidth -> -fullWidth }
-                )
-            }
-        }
+        slideRightIf = { view is View.Home },
     ) {
         when (it) {
             View.Home -> {
