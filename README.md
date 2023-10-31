@@ -1,10 +1,20 @@
 # BankApp
+
+## Requerimientos
+
+JDK 17
+
+## Test user
+
 Para ver data mockeada en la pantalla principal ingresar con
 
 Dato | Valor
 --- | --- 
 Email   |  `test@gmail.com`
 Password | `12345678`
+
+
+## Arquitectura
 
 La aplicación se encuentra modularizada siguiendo vertical slicing e IDD. Separando la capa de presentación en el módulo de feature y la lógica de negocio en model.
 ![Captura de pantalla 2023-10-31 a la(s) 12 02 01](https://github.com/buongarzoni/bankapp/assets/57886390/04a5fadb-8438-4296-ba97-7ae9133c9611)
