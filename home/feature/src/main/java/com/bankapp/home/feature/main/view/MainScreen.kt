@@ -1,9 +1,15 @@
 package com.bankapp.home.feature.main.view
 
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -34,24 +40,54 @@ import com.bankapp.home.model.domain.AccountBalance
 import com.bankapp.home.model.domain.Amount
 import com.bankapp.home.model.domain.Movement
 
+private const val CONTENT_ANIMATION_DURATION = 250
+
 @Composable
 fun MainScreen(
     presenter: MainPresenter,
-) = Scaffold(
-    topBar = { BankTopAppBar() }
 ) {
-    Content(Modifier.padding(it), presenter)
-}
-
-@Composable
-private fun Content(
-    modifier: Modifier,
-    presenter: MainPresenter,
-) = Box(modifier = modifier) {
     FetchingStateHandler(presenter)
-    when (presenter.view.value) {
-        View.Home -> HomeContent(presenter)
-        is View.MovementDetail -> TODO()
+    val view = presenter.view.value
+    AnimatedContent(
+        targetState = view,
+        label = "",
+        transitionSpec = {
+            if (view is View.Home) {
+                slideInHorizontally(
+                    animationSpec = tween(CONTENT_ANIMATION_DURATION),
+                    initialOffsetX = { fullWidth -> -fullWidth }
+                ) togetherWith slideOutHorizontally(
+                    animationSpec = tween(CONTENT_ANIMATION_DURATION),
+                    targetOffsetX = { fullWidth -> fullWidth }
+                )
+
+            } else {
+                slideInHorizontally(
+                    animationSpec = tween(CONTENT_ANIMATION_DURATION),
+                    initialOffsetX = { fullWidth -> fullWidth }
+                ) togetherWith slideOutHorizontally(
+                    animationSpec = tween(CONTENT_ANIMATION_DURATION),
+                    targetOffsetX = { fullWidth -> -fullWidth }
+                )
+            }
+        }
+    ) {
+        when (it) {
+            View.Home -> {
+                Scaffold(
+                    topBar = { BankTopAppBar() }
+                ) { paddingValues ->
+                    Box(modifier = Modifier.padding(paddingValues)) {
+                        HomeContent(presenter)
+                    }
+                }
+            }
+
+            is View.MovementDetail -> MovementDetailView(
+                presenter = presenter,
+                movement = it.movement
+            )
+        }
     }
 }
 
@@ -61,13 +97,13 @@ private fun HomeContent(presenter: MainPresenter) {
     Column(
         modifier = Modifier
             .padding(horizontal = 16.dp)
-            .padding(top = 16.dp),
+            .padding(top = 48.dp),
     ) {
         CardAccountBalance(bankDetails.accountBalance)
         Spacer(modifier = Modifier.height(20.dp))
         HeadlineMovements()
         Spacer(modifier = Modifier.height(10.dp))
-        LazyColumnMovements(bankDetails.movements)
+        LazyColumnMovements(presenter, bankDetails.movements)
     }
 }
 
@@ -115,21 +151,24 @@ private fun BalanceForAmount(
 private fun HeadlineMovements() = Text(
     text = stringResource(id = R.string.home_feature_headline_movements),
     style = MaterialTheme.typography.headlineSmall,
+    color = MaterialTheme.colorScheme.secondary,
 )
 
 @Composable
 private fun LazyColumnMovements(
+    presenter: MainPresenter,
     movements: List<Movement>,
 ) = LazyColumn(
-    modifier = Modifier
-        .fillMaxSize(),
+    modifier = Modifier.fillMaxSize(),
     horizontalAlignment = Alignment.CenterHorizontally,
+    verticalArrangement = Arrangement.spacedBy(8.dp),
+    contentPadding = PaddingValues(vertical = 8.dp)
 ) {
     items(movements) {
         Card(
             modifier = Modifier
                 .fillMaxWidth()
-                .clickable { },
+                .clickable { presenter.movementClicked(it) },
         ) {
             Row(
                 modifier = Modifier.padding(12.dp),
@@ -142,7 +181,6 @@ private fun LazyColumnMovements(
                 it.amount.ToUI()
             }
         }
-        Spacer(modifier = Modifier.height(8.dp))
     }
 }
 

@@ -10,6 +10,7 @@ import com.bankapp.home.feature.main.domain.FetchingState
 import com.bankapp.home.feature.main.domain.View
 import com.bankapp.home.model.actions.FetchBankDetails
 import com.bankapp.home.model.domain.BankDetails
+import com.bankapp.home.model.domain.Movement
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -47,4 +48,11 @@ class MainViewModel @Inject constructor(
         _fetchingState.value = FetchingState.Idle
     }
 
+    override fun movementClicked(movement: Movement) {
+        _view.value = View.MovementDetail(movement)
+    }
+
+    override fun dismissMovementDetailView() {
+        _view.value = View.Home
+    }
 }

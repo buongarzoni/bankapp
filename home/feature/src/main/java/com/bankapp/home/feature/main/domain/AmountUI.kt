@@ -44,7 +44,7 @@ fun Amount.ToUI() {
     ) {
         icon()
         Text(
-            text = "$currency $quantity",
+            text = "$currency ${String.format("%.2f", quantity)}",
             color = color,
             fontWeight = FontWeight.Bold,
         )

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="home_feature_cd_back_to_home">Back to home</string>
     <string name="home_feature_cd_negative_amount">Negative amount</string>
     <string name="home_feature_cd_positive_amount">Positive amount</string>
 
