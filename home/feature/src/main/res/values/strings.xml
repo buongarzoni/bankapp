@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_feature_cd_negative_amount">Negative amount</string>
+    <string name="home_feature_cd_positive_amount">Positive amount</string>
+
+    <string name="home_feature_headline_loading_bank_details">Loading bank details</string>
+    <string name="home_feature_headline_movements">Movements</string>
+
+    <string name="home_feature_label_expense">Expense</string>
+    <string name="home_feature_label_income">Income</string>
+</resources>
