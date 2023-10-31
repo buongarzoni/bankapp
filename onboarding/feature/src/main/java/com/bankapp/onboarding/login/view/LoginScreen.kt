@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedButton
@@ -16,6 +17,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.airbnb.lottie.compose.LottieAnimation
+import com.airbnb.lottie.compose.LottieCompositionSpec
+import com.airbnb.lottie.compose.rememberLottieComposition
 import com.bankapp.components.modal.ErrorModal
 import com.bankapp.components.modal.LoadingModal
 import com.bankapp.components.preview.UIModePreview
@@ -51,15 +55,25 @@ private fun Content(
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         item {
+            Lottie()
+            Spacer(modifier = Modifier.height(60.dp))
             Email(presenter)
             Password(presenter)
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(40.dp))
             LoginButton(presenter)
             RegisterButton(presenter)
         }
     }
 }
 
+@Composable
+private fun Lottie() {
+    val composition = rememberLottieComposition(spec = LottieCompositionSpec.RawRes(R.raw.lottie_onboarding_login))
+    LottieAnimation(
+        modifier = Modifier.size(200.dp),
+        composition = composition.value,
+    )
+}
 @Composable
 private fun LoginStateHandler(presenter: LoginPresenter) {
     when(val state = presenter.loginState.value) {
@@ -93,7 +107,7 @@ private fun Password(presenter: LoginPresenter) = PasswordPlaceholder(
 private fun LoginButton(presenter: LoginPresenter) = Button(
     modifier = Modifier
         .fillMaxWidth()
-        .padding(bottom = 8.dp),
+        .padding(bottom = 12.dp),
     onClick = { presenter.loginClicked() },
 ) {
     Text(stringResource(R.string.onboarding_feature_button_login))
