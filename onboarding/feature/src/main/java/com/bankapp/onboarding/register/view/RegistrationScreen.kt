@@ -6,6 +6,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import com.bankapp.components.animations.AnimatedSlide
 import com.bankapp.components.modal.ErrorModal
 import com.bankapp.components.modal.LoadingModal
 import com.bankapp.components.screen.BankTopAppBar
@@ -30,11 +31,18 @@ private fun Content(
     presenter: RegistrationPresenter,
 ) = Box(modifier = modifier) {
     StateModal(presenter)
-    when (presenter.registrationView.value) {
-        RegistrationView.PhotoIdView -> PhotoIdContent(presenter)
-        RegistrationView.SuccessView -> SuccessContent(presenter)
-        RegistrationView.UserDataView -> UserDataContent(presenter)
+    val view = presenter.registrationView.value
+    AnimatedSlide(
+        targetState = view,
+        slideRightIf = { view is RegistrationView.UserDataView },
+    ) {
+        when (view) {
+            RegistrationView.PhotoIdView -> PhotoIdContent(presenter)
+            RegistrationView.SuccessView -> SuccessContent(presenter)
+            RegistrationView.UserDataView -> UserDataContent(presenter)
+        }
     }
+
 }
 
 @Composable
