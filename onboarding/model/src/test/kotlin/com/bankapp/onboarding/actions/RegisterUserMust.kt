@@ -63,8 +63,8 @@ class RegisterUserMust {
 
         assertTrue(result is Either.Success)
         `then create new account with auth must be called`()
-        `then get logged user id must be called`(1)
-        `then register must be called`(1)
+        `then get logged user id must be called`()
+        `then register must be called`()
     }
 
     @Test
@@ -76,8 +76,8 @@ class RegisterUserMust {
 
         assertEquals(usersError.error, result.asError())
         `then create new account with auth must be called`()
-        `then get logged user id must be called`(1)
-        `then register must be called`(1)
+        `then get logged user id must be called`()
+        `then register must be called`()
     }
 
     @Test
@@ -89,7 +89,7 @@ class RegisterUserMust {
 
         assertEquals(authCoreError.error, result.asError())
         `then create new account with auth must be called`()
-        `then get logged user id must be called`(1)
+        `then get logged user id must be called`()
         `then register must be called`(0)
     }
 
